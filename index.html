@@ -1,0 +1,93 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>Simon</title>
+    <style>
+        /*
+    ** Hide when Angular is not yet loaded and initialized
+     */
+        
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+
+    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+
+<body ng-app="app">
+
+    <div class="container" ng-controller="AppController as vm">
+        <div class="simon-wrapper" ng-class="{'clickable':vm.clickable}">
+
+            <button class="game-pad green" ng-mousedown="vm.pressPad(1)" ng-mouseup="vm.releasePad(1)" ng-class="{'light':vm.currentPattern === 'simon-1'}">
+
+            </button>
+            <button class="game-pad red" ng-mousedown="vm.pressPad(2)" ng-mouseup="vm.releasePad(2)" ng-class="{'light':vm.currentPattern === 'simon-2'}">
+
+            </button>
+            <button class="game-pad yellow" ng-mousedown="vm.pressPad(3)" ng-mouseup="vm.releasePad(3)" ng-class="{'light':vm.currentPattern === 'simon-3'}">
+
+            </button>
+            <button class="game-pad blue" ng-mousedown="vm.pressPad(4)" ng-mouseup="vm.releasePad(4)" ng-class="{'light':vm.currentPattern === 'simon-4'}">
+
+            </button>
+
+            <div class="game-controls">
+                <!-- logo -->
+                <h2 class="made">Simon<sup>&reg;</sup></h2>
+
+                <!-- center control -->
+                <div class="center-controls">
+                    <div class="control">
+                        <div class="display">
+                            <h3 ng-show="vm.power">{{vm.display}}</h3>
+                        </div>
+                        <h4>COUNT</h4>
+                    </div>
+                    <div class="control">
+                        <button class="red" ng-click="vm.start()">
+                            <span></span>
+                        </button>
+                        <h4>START</h4>
+                    </div>
+                    <div class="control">
+
+                        <div class="led" ng-class="{'on':vm.strictMode}"></div>
+
+                        <button class="yellow" ng-click="vm.toggleStrictMode()">
+                            <span></span>
+                        </button>
+
+                        <h4>STRICT</h4>
+
+                    </div>
+                </div>
+
+                <!-- power control -->
+                <div class="power-controls">
+                    <div class="power-switch" ng-class="{'on':vm.power}">
+                        <label class="inline">OFF</label>
+                        <div class="switch-container inline" ng-click="vm.togglePower()">
+                            <div class="switch"></div>
+                        </div>
+                        <label class="inline">ON</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
